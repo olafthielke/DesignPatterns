@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="..\PatternRunner\bin\Debug\netcoreapp3.1\DebugLog.txt" Link="Structural\Decorator\Logging\DebugLog.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="StackExchange.Redis" Version="2.2.50" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Behavioural\TemplateMethod\Done\Standard\" />
+    <Folder Include="Behavioural\TemplateMethod\Done\VIP\" />
+  </ItemGroup>
+
+</Project>
