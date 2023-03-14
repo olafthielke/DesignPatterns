@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using Patterns.Behavioural.ChainOfResponsibility.Handlers;
+using Patterns.Behavioural.ChainOfResponsibility.Incidents;
+using Patterns.Behavioural.NullObject;
 using Patterns.Behavioural.TemplateMethod;
 using Patterns.Creational.AbstractFactory.SalesTax.EvenBetter;
 using Patterns.Creational.Builder.Employment;
@@ -26,8 +29,8 @@ namespace PatternRunner
         static void Main(string[] args)
         {
             //RunCreationalDesignPatterns();
-            RunStructuralDesignPatterns();
-            //RunBehaviouralDesignPatterns();
+            //RunStructuralDesignPatterns();
+            RunBehaviouralDesignPatterns();
 
             Console.ReadLine();
         }
@@ -288,9 +291,9 @@ namespace PatternRunner
 
         private static void RunStructuralDesignPatterns()
         {
-            //RunFacade();
+            RunFacade();
             //RunDecorator();
-            RunHumbleObject();
+            //RunHumbleObject();
         }
 
         #region Facade
@@ -351,9 +354,9 @@ namespace PatternRunner
 
         private static void RunDecorator()
         {
-            RunCoffeeDecorator();
+            //RunCoffeeDecorator();
 
-            //RunLoggerDecorator();
+            RunLoggerDecorator();
         }
 
         private static void RunCoffeeDecorator()
@@ -372,10 +375,10 @@ namespace PatternRunner
 
         private static void RunLoggerDecorator()
         {
-            var logger1 = new ConsoleLogger();
+            var logger1 = new Patterns.Structural.Decorator.Logging.ConsoleLogger();
             logger1.Log("Only logging to console.");
 
-            var logger2 = new DebugToFileLogger(new ConsoleLogger());
+            var logger2 = new DebugToFileLogger(new Patterns.Structural.Decorator.Logging.ConsoleLogger());
             logger2.Log("Logging to file and console.").Wait();
         }
 
@@ -398,27 +401,69 @@ namespace PatternRunner
 
         private static void RunBehaviouralDesignPatterns()
         {
-            RunTemplateMethod();
+            //RunNullObject();
+            //RunTemplateMethod();
+            RunChainOfResponsibility();
+        }
+
+        private static void RunNullObject()
+        {
+            var obj = new ClassThatDoesSomeStuff(new Patterns.Behavioural.NullObject.DoNotLogger());
+
+            var result = obj.DoSomeStuff(2, 3);
         }
 
         private static void RunTemplateMethod()
         {
-            // Get VIP Customers first
+            // Get VIP Customers
             var vipMiner = new VipCustomerMiner();
             var vipCustomers = vipMiner.MineCustomers();
-            Log(vipCustomers);
+            Log("VIP Customers:", vipCustomers);
 
-            // Get Standard Customers next
+            // Get Standard Customers
             var miner = new StandardCustomerMiner();
             var customers = miner.MineCustomers();
-            Log(customers);
+            Log("Standard Customers:", customers);
         }
 
-        private static void Log(IList<Patterns.Behavioural.TemplateMethod.Customer> customers)
+        private static void Log(string heading, IList<Patterns.Behavioural.TemplateMethod.Customer> customers)
         {
             Console.WriteLine();
+            Console.WriteLine(heading);
             foreach (var customer in customers)
                 Console.WriteLine($"Name: {customer.FirstName} {customer.LastName}, Email: {customer.EmailAddress}");
+        }
+
+        private static void RunChainOfResponsibility()
+        {
+            // Setup Chain of Responsibility
+            var handler = new TradeRepresentative(
+                new Undersecretary(
+                    new ChiefOfStaff(
+                        new ThePresident())));
+
+            Console.WriteLine("Trade Dispute:");
+            handler.Handle(new TradeDispute());
+            Console.WriteLine("-----------------------------------------------------------------");
+            Console.WriteLine();
+
+            Console.WriteLine("Tariff Negotiation:");
+            handler.Handle(new TariffNegotiation());
+            Console.WriteLine("-----------------------------------------------------------------");
+            Console.WriteLine();
+
+            Console.WriteLine("Border Skirmish:");
+            handler.Handle(new BorderSkirmish());
+            Console.WriteLine("-----------------------------------------------------------------");
+            Console.WriteLine();
+
+            Console.WriteLine("UN Resolution:");
+            handler.Handle(new UNResolution());
+            Console.WriteLine("-----------------------------------------------------------------");
+            Console.WriteLine();
+
+            Console.WriteLine("War:");
+            handler.Handle(new War());
         }
 
         #endregion

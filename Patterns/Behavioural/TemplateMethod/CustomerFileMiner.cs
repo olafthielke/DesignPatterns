@@ -76,7 +76,7 @@ namespace Patterns.Behavioural.TemplateMethod
 
         protected virtual void PostprocessFile(string filePath)
         {
-            MoveFileToDoneDirectory( filePath);
+            MoveFileToDoneDirectory(filePath);
         }
 
 

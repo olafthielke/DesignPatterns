@@ -21,10 +21,5 @@ namespace Patterns.Behavioural.TemplateMethod
 
             return JsonConvert.DeserializeObject<List<Customer>>(customerString);
         }
-
-        protected override void PostprocessFile(string filePath)
-        {
-            MoveFileToDoneDirectory(filePath);
-        }
     }
 }

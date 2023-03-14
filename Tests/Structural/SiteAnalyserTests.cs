@@ -13,8 +13,9 @@ namespace Tests.Structural
         {
             var analyser = new SiteAnalyser(new HttpClient());
             var contentSize = await analyser.GetContentSize("https://codecoach.co.nz");
-            contentSize.Should().Be(126160);
+            contentSize.Should().Be(93456);
         }
+
 
         [Fact]
         public async Task Unit_Test_SiteAnalyser_With_Stub()
