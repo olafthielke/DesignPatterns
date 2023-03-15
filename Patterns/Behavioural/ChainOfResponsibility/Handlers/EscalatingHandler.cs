@@ -12,7 +12,6 @@ namespace Patterns.Behavioural.ChainOfResponsibility.Handlers
             Superior = superior;
         }
 
-
         public virtual void Escalate(Incident incident)
         {
             Superior.Handle(incident);

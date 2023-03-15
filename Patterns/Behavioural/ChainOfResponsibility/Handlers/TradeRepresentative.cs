@@ -11,13 +11,12 @@ namespace Patterns.Behavioural.ChainOfResponsibility.Handlers
             : base(superior)
         { }
 
-
         public override void Handle(Incident incident)
         {
-            if (incident is TradeDispute)
+            if (incident.Severity == 4)
             {
                 LogCanHandle(incident);
-                // TODO: Code to handle this incident type.
+                // TODO: Code to handle this level of severity incident.
             }
             else
             {

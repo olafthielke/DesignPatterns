@@ -442,27 +442,27 @@ namespace PatternRunner
                     new ChiefOfStaff(
                         new ThePresident())));
 
-            Console.WriteLine("Trade Dispute:");
+            Console.WriteLine("Trade Dispute (Severity 4):");
             handler.Handle(new TradeDispute());
             Console.WriteLine("-----------------------------------------------------------------");
             Console.WriteLine();
 
-            Console.WriteLine("Tariff Negotiation:");
+            Console.WriteLine("Tariff Negotiation (Severity 3):");
             handler.Handle(new TariffNegotiation());
             Console.WriteLine("-----------------------------------------------------------------");
             Console.WriteLine();
 
-            Console.WriteLine("Border Skirmish:");
+            Console.WriteLine("Border Skirmish (Severity 2):");
             handler.Handle(new BorderSkirmish());
             Console.WriteLine("-----------------------------------------------------------------");
             Console.WriteLine();
 
-            Console.WriteLine("UN Resolution:");
+            Console.WriteLine("UN Resolution (Severity 2):");
             handler.Handle(new UNResolution());
             Console.WriteLine("-----------------------------------------------------------------");
             Console.WriteLine();
 
-            Console.WriteLine("War:");
+            Console.WriteLine("War (Severity 1):");
             handler.Handle(new War());
         }
 

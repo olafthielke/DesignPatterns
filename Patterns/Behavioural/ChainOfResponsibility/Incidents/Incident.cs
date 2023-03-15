@@ -2,6 +2,6 @@
 {
     public abstract class Incident
     {
-
+        public abstract int Severity { get; }
     }
 }

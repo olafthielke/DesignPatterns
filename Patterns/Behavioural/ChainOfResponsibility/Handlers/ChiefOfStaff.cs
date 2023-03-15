@@ -14,10 +14,10 @@ namespace Patterns.Behavioural.ChainOfResponsibility.Handlers
 
         public override void Handle(Incident incident)
         {
-            if (incident is BorderSkirmish || incident is UNResolution)
+            if (incident.Severity == 2)
             {
                 LogCanHandle(incident);
-                // TODO: Code to handle this incident type.
+                // TODO: Code to handle this level of severity incident.
             }
             else
             {
