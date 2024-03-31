@@ -28,9 +28,9 @@ namespace PatternRunner
     {
         static void Main(string[] args)
         {
-            //RunCreationalDesignPatterns();
+            RunCreationalDesignPatterns();
             //RunStructuralDesignPatterns();
-            RunBehaviouralDesignPatterns();
+            //RunBehaviouralDesignPatterns();
 
             Console.ReadLine();
         }
@@ -39,10 +39,10 @@ namespace PatternRunner
 
         private static void RunCreationalDesignPatterns()
         {
-            RunFactoryMethod();
+            //RunFactoryMethod();
             //RunAbstractFactory();
-            //RunSingleton();
-            //RunMonostate();
+            RunSingleton();
+            RunMonostate();
             //RunBuilder();
         }
 
@@ -53,7 +53,7 @@ namespace PatternRunner
             // Pick the type of car factory we want:
 
             var electricCarFactory = new ElectricCarFactory();
-            var electricCar = electricCarFactory.Make();
+            var electricCar = electricCarFactory.Assemble();
 
             electricCar.Accelerate();
             electricCar.Drive();
@@ -64,8 +64,8 @@ namespace PatternRunner
 
             // -------------------------------------------------
 
-            var petrolCarFactory = new PetrolEngineCarFactory();
-            var petrolCar = petrolCarFactory.Make();
+            var petrolCarFactory = new PetrolCarFactory();
+            var petrolCar = petrolCarFactory.Assemble();
 
             petrolCar.Accelerate();
             petrolCar.Drive();
@@ -76,15 +76,15 @@ namespace PatternRunner
 
             // -------------------------------------------------
 
-            var dieselCarFactory = new DieselEngineCarFactory();
-            var dieselCar = dieselCarFactory.Make();
+            //var dieselCarFactory = new DieselCarFactory();
+            //var dieselCar = dieselCarFactory.Make();
 
-            dieselCar.Accelerate();
-            dieselCar.Drive();
-            dieselCar.Refuel();
+            //dieselCar.Accelerate();
+            //dieselCar.Drive();
+            //dieselCar.Refuel();
 
-            Console.WriteLine("\t------------------------------------");
-            Console.WriteLine();
+            //Console.WriteLine("\t------------------------------------");
+            //Console.WriteLine();
         }
 
         #endregion

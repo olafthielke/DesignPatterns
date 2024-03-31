@@ -3,18 +3,19 @@ using Patterns.Creational.FactoryMethod.CarMaker.PowerSources;
 
 namespace Patterns.Creational.FactoryMethod.CarMaker.Factories
 {
-    //public class ElectricCarFactory
+
+    //public class PetrolCarFactory
     //{
-    //    public ElectricCar Assemble()
+    //    public PetrolCar Assemble()
     //    {
     //        var chassis = new Chassis();
-    //        var motor = new ElectricMotor();
-    //        var batteries = new BatteryArray();
+    //        var engine = new PetrolEngine();
+    //        var fueltank = new FuelTank();
     //        var numberOfWheels = 4;
 
-    //        return new ElectricCar(chassis, 
-    //            motor, 
-    //            batteries, 
+    //        return new PetrolCar(chassis, 
+    //            engine, 
+    //            fueltank,
     //            numberOfWheels);
     //    }
     //}
@@ -22,19 +23,16 @@ namespace Patterns.Creational.FactoryMethod.CarMaker.Factories
 
 
 
-
-
-
-    public class ElectricCarFactory : CarFactory
+    public class PetrolCarFactory : CarFactory
     {
         protected override Motor MakeMotor()
         {
-            return new ElectricMotor();
+            return new PetrolEngine();
         }
 
         protected override EnergyStore MakeEnergyStore()
         {
-            return new BatteryArray();
+            return new FuelTank();
         }
     }
 }

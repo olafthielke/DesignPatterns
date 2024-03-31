@@ -24,7 +24,7 @@ namespace WebApi.Controllers
             //var car = new CombustionEngineCar();
 
             // ...to...
-            var car = Factory.Make();
+            var car = Factory.Assemble();
 
             // Which is more versatile? Why?
 
